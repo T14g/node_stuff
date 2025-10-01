@@ -2,20 +2,18 @@
 // Instead of that we can use event names as properties of an object
 // And functions as values of those properties
 
-var emitter = require('./emitter');
+var emitter = require('events');
+var config = require('./config').events;
 
-var emtr = new emitter();   
+var emtr = new emitter();
 
-emtr.on('event1', function() {
-    console.log('Event 1 triggered');
+emtr.on(config.GREET, function () {
+    console.log('GREET event triggered');
 });
 
-emtr.on('event2', function() {
-    console.log('Event 2 triggered');
-});
 
-emtr.emit('event1');
-emtr.emit('event');
+emtr.emit(config.GREET);
+
 
 // var obj = {
 //     greet: 'hello'
